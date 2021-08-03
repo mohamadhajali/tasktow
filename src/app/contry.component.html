@@ -1,0 +1,38 @@
+<body>
+
+    <nav class="navbar">
+        <input class="from-control" type="text" name="name" [(ngModel)]="name"
+         (ngModelChange)="search()" placeholder="For search">
+    </nav>
+    
+        <table id="user" >
+            <thead>
+                <tr>
+                    <th *ngFor="let col of displaycolms">
+                        {{col}}
+                    </th>
+                </tr>
+            </thead>
+         <tbody>
+            <tr *ngFor="let cont of ElemantData | paginate : {itemsPerPage:10,currentPage:p}">
+                <td  >
+                    {{cont.name}}
+                </td>
+                <td  >
+                    {{cont.alpha2Code}}
+                </td>
+                <td  >
+                    {{cont.capital}}
+                </td>
+                <td  >
+                    {{cont.population}}
+                </td>
+            </tr>
+         </tbody>
+           <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </table>
+    
+    
+    
+
+</body>
